@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Igor Torres | Front-End Developer</title>
+</head>
+
+<body>
+  <!-- Sticky top navigation -->
+  <header>
+    <a href="#" class="brand" aria-label="Igor Torres home">
+      <span class="brand-mark">ITF</span>
+      <span>Igor Torres</span>
+    </a>
+
+    <!-- These links jump to sections below using matching IDs -->
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <!-- Hero / first impression section -->
+    <section class="hero">
+      <div>
+        <div class="eyebrow">
+          <span class="status-dot"></span>
+          Front-end developer in progress
+        </div>
+
+        <h1>Clean websites with a little personality.</h1>
+
+        <p>
+          I’m Igor, a front-end developer in training building responsive, practical,
+          and human-looking interfaces with HTML, CSS, JavaScript, and curiosity.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-secondary" href="#contact">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Decorative visual card on the right side of the hero -->
+      <aside class="character-card" aria-label="Decorative developer card">
+        <div class="code-window">
+          <div class="window-dots" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+
+          <pre><span class="tag">const</span> developer = {
+            name: <span class="value">"Igor"</span>,
+            focus: <span class="value">"front-end"</span>,
+            style: <span class="value">"minimal + memorable"</span>,
+            status: <span class="value">"building daily"</span>
+          };</pre>
+        </div>
+
+        <!-- Mascot images swap opacity to create a blink effect -->
+        <div class="mascot mascot-agent" aria-hidden="true">
+          <img src="monkey-open.png" alt="" class="mascot-frame frame-open" />
+          <img src="monkey-blink.png" alt="" class="mascot-frame frame-blink" />
+        </div>
+
+        <p class="agent-status">
+          <span class="dot"></span>
+          mildly annoyed, still coding
+        </p>
+      </aside>
+    </section>
+
+    <!-- About cards -->
+    <section id="about">
+      <div class="section-heading">
+        <h2>About</h2>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Learning by building</h3>
+          <p>I’m focused on turning concepts into real pages, components, and small interactive projects.</p>
+        </article>
+
+        <article class="card">
+          <h3>Practical mindset</h3>
+          <p>I care about layouts that work on phones, tablets, and desktops without overcomplicating the code.</p>
+        </article>
+
+        <article class="card">
+          <h3>Personality matters</h3>
+          <p>Good design should feel clear, useful, and memorable — not generic.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Project cards -->
+    <section id="projects">
+      <div class="section-heading">
+        <h2>Projects</h2>
+      </div>
+      <div class="projects-row"> 
+
+        <article class="card project-card">
+          <div class="project-image-wrap">
+            <img src="project-portfolio.png" alt="Screenshot of Responsive Portfolio project" class="project-image">
+          </div>
+
+          <div class="project-top">
+            <div class="project-icon">01</div>
+            <span class="pill">HTML/CSS</span>
+          </div>
+
+          <h3>Responsive Portfolio</h3>
+          <p>A clean personal site focused on layout, spacing, typography, and mobile responsiveness.</p>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-image-wrap">
+            <img src="project-adventure.png" alt="Screenshot of Choose Your Own Adventure project" class="project-image">
+          </div>
+
+          <div class="project-top">
+            <div class="project-icon">02</div>
+            <span class="pill">JavaScript</span>
+          </div>
+
+          <h3>Choose Your Own Adventure</h3>
+          <p>A small interactive story where users make choices that affect the outcome.</p>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-image-wrap">
+            <img src="project-mascot.png" alt="Screenshot of AI Mascot Helper project" class="project-image">
+          </div>
+
+          <div class="project-top">
+            <div class="project-icon">03</div>
+            <span class="pill">UI Demo</span>
+          </div>
+
+          <h3>AI Mascot Helper</h3>
+          <p>A lightweight character interface that changes expression based on the user’s action.</p>     
+        </article>
+      </div>
+    </section>
+
+    <!-- Skill badges -->
+    <section id="skills">
+      <div class="section-heading">
+        <h2>Skills</h2>
+      </div>
+
+      <div class="skills">
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">Responsive Design</span>
+        <span class="skill">Flexbox</span>
+        <span class="skill">CSS Grid</span>
+        <span class="skill">GitHub</span>
+        <span class="skill">UI Basics</span>
+      </div>
+    </section>
+
+    <!-- Contact call-to-action -->
+    <section id="contact">
+      <div class="contact-box">
+        <div>
+          <h2>Let’s build something simple and useful.</h2>
+          <p>Available for practice projects, small websites, and front-end collaboration.</p>
+        </div>
+
+        <div class="contact-links">
+          <a href="mailto:igor.tfarias@gmail.com">Email</a>
+          <!-- Replace # with real GitHub and LinkedIn links -->
+          <a href="#">GitHub</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="image-modal" id="imageModal">
+    <button class="modal-close" id="modalClose">×</button>
+    <img src="" alt="Project preview" id="modalImage">
+  </div>
+
+  <footer class="page">
+    © 2026 Igor Torres. Built with HTML, CSS, and patience.<br> Powered by coffee and a love for clean code.
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
