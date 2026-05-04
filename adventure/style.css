@@ -1,0 +1,439 @@
+/* =========================================================
+   GRUMPY QUEST — STYLE.CSS
+   Fully commented so you understand what controls what
+
+   This file controls:
+   - layout (left panel vs right panel)
+   - spacing and alignment
+   - colors and theme
+   - buttons and cards
+   - responsive behavior
+
+========================================================= */
+
+
+/* =========================================================
+   ROOT VARIABLES (THEME SYSTEM)
+   Change colors here to affect the whole app
+========================================================= */
+:root {
+  --bg: #f7f4ee;                  /* main background */
+  --card: #fffaf2;                /* card base color */
+  --text: #1f2933;                /* main text color */
+  --muted: #6b7280;               /* secondary text */
+  --accent: #ff8a3d;              /* primary accent (orange) */
+  --accent-dark: #d95f16;         /* darker orange */
+  --danger: #ef4444;              /* red (enemy / damage) */
+
+  --border: rgba(31, 41, 51, 0.12);
+  --shadow: 0 18px 50px rgba(31, 41, 51, 0.08);
+  --radius: 24px;
+}
+
+
+/* =========================================================
+   RESET (REMOVE DEFAULT BROWSER STYLES)
+========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BODY (GLOBAL PAGE STYLE)
+========================================================= */
+body {
+  min-height: 100vh;
+
+  font-family: Inter, system-ui, sans-serif;
+
+  /* Background with subtle gradients */
+  background:
+    radial-gradient(circle at top left, rgba(255, 138, 61, 0.18), transparent 32rem),
+    radial-gradient(circle at bottom right, rgba(31, 41, 51, 0.08), transparent 28rem),
+    var(--bg);
+
+  color: var(--text);
+}
+
+
+/* =========================================================
+   BUTTON BASE STYLE
+========================================================= */
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   HEADER (TOP BAR)
+========================================================= */
+.game-header {
+  width: min(1400px, calc(100% - 32px));
+  margin: 20px auto;
+
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  align-items: center;
+
+  gap: 16px;
+}
+
+
+/* Title container */
+.title-wrap {
+  text-align: center;
+}
+
+/* Main title */
+.title-wrap h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  letter-spacing: -0.08em;
+}
+
+/* Subtitle */
+.title-wrap p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   HEADER BUTTONS
+========================================================= */
+.icon-btn {
+  width: 54px;
+  height: 54px;
+
+  border-radius: 18px;
+  border: 1px solid var(--border);
+
+  background: rgba(255, 250, 242, 0.8);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+
+  transition: 0.2s;
+}
+
+.icon-btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* Save text (fades in/out) */
+.save-status {
+  font-size: 0.8rem;
+  color: var(--muted);
+
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.save-status.show {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT (2 COLUMNS)
+========================================================= */
+.game-layout {
+  width: min(1400px, calc(100% - 32px));
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 320px 1fr;
+
+  gap: 20px;
+}
+
+
+/* =========================================================
+   CARD BASE STYLE (USED EVERYWHERE)
+========================================================= */
+.player-panel,
+.story-card,
+.npc-panel,
+.history-panel {
+  background: rgba(255, 250, 242, 0.75);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   LEFT PANEL (PLAYER)
+========================================================= */
+.player-panel {
+  padding: 22px;
+
+  /* sticks when scrolling */
+  position: sticky;
+  top: 20px;
+}
+
+
+/* Section spacing */
+.panel-section + .panel-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+
+/* Section titles */
+.panel-section h2 {
+  font-size: 0.85rem;
+  color: var(--accent-dark);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   STATS ROW
+========================================================= */
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 12px 0;
+  font-weight: 700;
+}
+
+.stat-row span {
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   HEALTH BAR
+========================================================= */
+.bar {
+  height: 10px;
+  border-radius: 999px;
+
+  background: rgba(31, 41, 51, 0.1);
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  transition: width 0.3s;
+}
+
+/* Player HP */
+.hp-fill {
+  background: var(--accent);
+}
+
+/* Enemy HP */
+.enemy-fill {
+  background: var(--danger);
+}
+
+
+/* =========================================================
+   LISTS (SKILLS + INVENTORY)
+========================================================= */
+.list-stack {
+  display: grid;
+  gap: 8px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 10px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(0,0,0,0.05);
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   RIGHT SIDE CONTENT
+========================================================= */
+.main-panel {
+  display: grid;
+  gap: 18px;
+}
+
+
+/* =========================================================
+   STORY CARD
+========================================================= */
+.story-card {
+  padding: 26px;
+  min-height: 420px;
+}
+
+
+/* Page number */
+.page-number {
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+
+/* Story title */
+.story-card h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 16px;
+}
+
+
+/* Story text */
+.story-text {
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   CHOICES (BUTTONS)
+========================================================= */
+.choices {
+  margin-top: 24px;
+  display: grid;
+  gap: 10px;
+}
+
+.choice-btn {
+  padding: 14px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255,138,61,0.3);
+
+  background: rgba(255,255,255,0.7);
+
+  font-weight: 700;
+
+  display: flex;
+  justify-content: space-between;
+
+  transition: 0.2s;
+}
+
+.choice-btn:hover {
+  background: var(--accent);
+  color: white;
+}
+
+
+/* =========================================================
+   NPC / ENEMY PANEL
+========================================================= */
+.npc-panel {
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* Layout for NPC content */
+.npc-content {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 16px;
+}
+
+
+/* NPC avatar */
+.npc-avatar {
+  width: 100px;
+  height: 100px;
+
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+
+  background: rgba(255,138,61,0.2);
+
+  font-size: 2rem;
+}
+
+
+/* =========================================================
+   HISTORY PANEL
+========================================================= */
+.history-panel {
+  padding: 20px;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* Log container */
+.history-log {
+  margin-top: 10px;
+
+  max-height: 150px;
+  overflow-y: auto;
+
+  display: grid;
+  gap: 6px;
+}
+
+
+/* Individual log entry */
+.log-entry {
+  padding: 10px;
+
+  border-radius: 14px;
+  background: rgba(255,255,255,0.6);
+
+  font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   SMALL BUTTON
+========================================================= */
+.small-btn {
+  padding: 6px 10px;
+
+  border-radius: 999px;
+  border: 1px solid var(--border);
+
+  background: rgba(255,255,255,0.6);
+}
+
+
+/* =========================================================
+   RESPONSIVE (MOBILE)
+========================================================= */
+@media (max-width: 900px) {
+
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .player-panel {
+    position: static;
+  }
+
+  .npc-content {
+    grid-template-columns: 1fr;
+  }
+
+  .game-header {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}

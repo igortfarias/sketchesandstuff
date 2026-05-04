@@ -1,0 +1,263 @@
+<!-- =========================================================
+  GRUMPY QUEST — HTML STRUCTURE
+  Save this file as: index.html
+
+  This HTML is only the structure.
+  CSS controls how it looks.
+  JavaScript controls what changes on screen.
+
+  Suggested folder:
+
+  adventure/
+    index.html
+    style.css
+    script.js
+========================================================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic page setup -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Page title shown in browser tab -->
+  <title>Grumpy Quest | Choose Your Path</title>
+
+  <!-- Connect external CSS file -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- =====================================================
+    TOP HEADER
+    Contains:
+    - menu button
+    - adventure title
+    - autosave status
+    - reset button
+  ====================================================== -->
+  <header class="game-header">
+
+    <!-- Future menu/settings button -->
+    <button class="icon-btn" aria-label="Open menu">
+      ☰
+    </button>
+
+    <!-- Adventure title -->
+    <div class="title-wrap">
+      <h1>Grumpy Quest</h1>
+      <p>Choose your path. Turn to the next page.</p>
+    </div>
+
+    <!-- Header actions -->
+    <div class="header-actions">
+
+      <!-- JS will briefly show this after autosave -->
+      <p id="saveStatus" class="save-status">
+        Autosaved
+      </p>
+
+      <!-- JS reset button -->
+      <button id="resetBtn" class="icon-btn" aria-label="Reset game">
+        ↺
+      </button>
+    </div>
+  </header>
+
+
+  <!-- =====================================================
+    MAIN GAME LAYOUT
+    Left side: player panel
+    Right side: story, NPC/enemy, history log
+  ====================================================== -->
+  <main class="game-layout">
+
+    <!-- ===================================================
+      LEFT SIDEBAR — PLAYER PANEL
+      JS updates:
+      - HP
+      - gold
+      - current page
+      - skills
+      - inventory
+    ==================================================== -->
+    <aside class="player-panel">
+
+      <!-- PLAYER STATS -->
+      <section class="panel-section">
+        <h2>Player</h2>
+
+        <!-- HP numbers -->
+        <div class="stat-row">
+          <span>HP</span>
+          <strong>
+            <span id="playerHp">18</span>
+            /
+            <span id="playerMaxHp">25</span>
+          </strong>
+        </div>
+
+        <!-- HP bar -->
+        <div class="bar">
+          <div id="hpFill" class="bar-fill hp-fill"></div>
+        </div>
+
+        <!-- Gold -->
+        <div class="stat-row">
+          <span>Gold</span>
+          <strong id="playerGold">23</strong>
+        </div>
+
+        <!-- Current book page -->
+        <div class="stat-row">
+          <span>Page</span>
+          <strong id="currentPageLabel">1</strong>
+        </div>
+      </section>
+
+
+      <!-- SKILLS -->
+      <section class="panel-section">
+        <h2>Skills</h2>
+
+        <!-- JS creates skill rows inside this div -->
+        <div id="skillsList" class="list-stack"></div>
+      </section>
+
+
+      <!-- INVENTORY -->
+      <section class="panel-section">
+        <h2>Inventory</h2>
+
+        <!-- JS creates inventory rows inside this div -->
+        <div id="inventoryList" class="list-stack"></div>
+      </section>
+
+    </aside>
+
+
+    <!-- ===================================================
+      RIGHT SIDE — MAIN GAME CONTENT
+    ==================================================== -->
+    <section class="main-panel">
+
+      <!-- =================================================
+        STORY CARD
+        This is the main "book page" area.
+
+        JS updates:
+        - page number
+        - story title
+        - story text
+        - choice buttons
+      ================================================== -->
+      <article class="story-card">
+
+        <div class="card-label">Story</div>
+
+        <!-- Current page number -->
+        <p class="page-number">
+          Page <span id="pageNumber">1</span>
+        </p>
+
+        <!-- Story title -->
+        <h2 id="storyTitle">
+          Loading...
+        </h2>
+
+        <!-- Story text -->
+        <p id="storyText" class="story-text">
+          Loading story...
+        </p>
+
+        <!-- JS creates choice buttons here -->
+        <div id="choices" class="choices"></div>
+
+      </article>
+
+
+      <!-- =================================================
+        NPC / ENEMY PANEL
+
+        This appears only when the current page has
+        an NPC or enemy.
+
+        JS adds/removes the "hidden" class.
+      ================================================== -->
+      <section id="npcPanel" class="npc-panel hidden">
+
+        <div class="card-label">NPC / Enemy</div>
+
+        <div class="npc-content">
+
+          <!-- Could be emoji, icon, image, etc. -->
+          <div id="npcAvatar" class="npc-avatar">
+            ?
+          </div>
+
+          <div>
+            <!-- NPC / enemy name -->
+            <h3 id="npcName"></h3>
+
+            <!-- NPC / enemy description -->
+            <p id="npcDescription"></p>
+
+            <!-- NPC HP numbers -->
+            <div class="stat-row compact">
+              <span>HP</span>
+              <strong>
+                <span id="npcHp"></span>
+                /
+                <span id="npcMaxHp"></span>
+              </strong>
+            </div>
+
+            <!-- NPC HP bar -->
+            <div class="bar small">
+              <div id="npcHpFill" class="bar-fill enemy-fill"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- =================================================
+        HISTORY / LOG PANEL
+
+        This shows:
+        - choices made
+        - dice rolls
+        - combat results
+        - item usage
+      ================================================== -->
+      <section class="history-panel">
+
+        <div class="history-header">
+          <div class="card-label">History / Log</div>
+
+          <!-- JS clears history log -->
+          <button id="clearHistoryBtn" class="small-btn">
+            Clear Log
+          </button>
+        </div>
+
+        <!-- JS creates log entries here -->
+        <div id="historyLog" class="history-log"></div>
+
+      </section>
+
+    </section>
+  </main>
+
+
+  <!-- =====================================================
+    JAVASCRIPT FILE
+    Put this at the bottom so the HTML loads first.
+  ====================================================== -->
+  <script src="script.js"></script>
+
+</body>
+</html>
